@@ -1,0 +1,86 @@
+<%- include ("../../partials/header.ejs")%>
+
+<body>
+    <%- include ("../../partials/adminnavbar.ejs")%>
+    <div class="container">
+        <br>
+        <div class="card-header">
+            <h1>Cadastrar telefones do <%= usuario.nome %></h1>
+        </div>
+    </div>
+
+    <%- include ("../../partials/erros.ejs")%>
+
+    <br>
+
+    <div class="container">
+        <div class="card">
+            <br>
+            <%- include ("../../partials/_msg.ejs")%>
+            <div class="card-body">
+                <form action="/admin/telefone/salvar" method="POST">
+                    <label for="nome">Nome do contato : </label>
+                    <input id="nome" name="nome" type="text" placeholder="Insira o nome do contato"
+                        class="form-control">
+                    <label for="numero">Número : </label>
+                    <input id="numero" name="numero" type="text" placeholder="Insira o número do contato"
+                        class="form-control">
+                    <input type="hidden" name="usuarioId" id="usuarioId" value="<%= usuario.id %>">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+
+            <div class="card-body">
+                <table id="listar-telefones" class="table table-bordered">
+                    <thead>
+                        <th scope="col">Código</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Número</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Excluir</th>
+                    </thead>
+                    <tbody>
+                        <% telefones.forEach(telefone=>{ %>
+                        <tr>
+                            <td><%=telefone.id %></td>
+                            <td><%=telefone.nome %></td>
+                            <td><%=telefone.numero %></td>
+                            <td><a href="/admin/telefone/editar/<%= telefone.id %>" class="btn btn-danger">Editar</a></td>
+                            <form onsubmit="confirmarDelecao(event,this)" action="/admin/telefone/deletar" method="POST" style="display:inline">
+                                <input type="hidden" name="id" id="id" value="<%= telefone.id %>">
+                                <td><button class="btn btn-primary">Excluir</button></td>
+                            </form>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function ($) {
+        $('#numero').mask('(00) 0000-00009');
+        $('#numero').blur(function (event) {
+            if ($(this).val().length == 15) { // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+                $('#numero').mask('(00) 00000-0009');
+            } else {
+                $('#numero').mask('(00) 0000-00009');
+            }
+        });
+    })
+</script>
+
+<script>
+    function confirmarDelecao(event,form){
+        event.preventDefault()
+        let decisao = confirm('Voce quer deletar este telefone ? ')
+        if(decisao){
+           form.submit()
+        }
+    }
+</script>
+
+<%- include ("../../partials/footer.ejs")%>

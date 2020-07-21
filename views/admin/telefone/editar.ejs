@@ -1,0 +1,51 @@
+<%- include ("../../partials/header.ejs")%>
+
+<body>
+    <%- include ("../../partials/adminnavbar.ejs")%>
+    <div class="container">
+        <br>
+        <div class="card-header">
+            <h1>Edição de telefone do <%= usuario.nome %></h1>
+        </div>
+    </div>
+
+    <%- include ("../../partials/erros.ejs")%>
+
+    <br>
+
+    <div class="container">
+        <div class="card">
+            <br>
+            <%- include ("../../partials/_msg.ejs")%>
+            <div class="card-body">
+                <form action="/admin/telefone/atualizar" method="POST">
+                    <label for="nome">Nome do contato : </label>
+                    <input id="nome" name="nome" type="text" placeholder="Insira o nome do contato"
+                    value="<%= telefone.nome %>"class="form-control">
+                    <label for="numero">Número : </label>
+                    <input id="numero" name="numero" type="text" placeholder="Insira o número do contato"
+                    value="<%= telefone.numero %>"  class="form-control">
+                    <input type="hidden" name="usuarioId" id="usuarioId" value="<%= usuario.id %>">
+                    <input type="hidden" name="id" id="id" value="<%= telefone.id %>">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function ($) {
+        $('#numero').mask('(00) 0000-00009');
+        $('#numero').blur(function (event) {
+            if ($(this).val().length == 15) { // Celular com 9 dígitos + 2 dígitos DDD e 4 da máscara
+                $('#numero').mask('(00) 00000-0009');
+            } else {
+                $('#numero').mask('(00) 0000-00009');
+            }
+        });
+    })
+</script>
+
+<%- include ("../../partials/footer.ejs")%>

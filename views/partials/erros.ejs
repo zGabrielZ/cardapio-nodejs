@@ -1,0 +1,8 @@
+<% if(erros){%>
+    <div class="container">
+        <br>
+        <%for (var i = 0; i<erros.length; i++) {%>
+            <div class="alert alert-danger"><%= erros[i].msg %></div>
+        <% } %>
+    </div>
+ <% } %>

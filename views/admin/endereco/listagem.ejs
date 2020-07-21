@@ -1,0 +1,30 @@
+<%- include ("../../partials/header.ejs")%>
+
+<body>
+    <%- include ("../../partials/adminnavbar.ejs")%>
+    <div class="container">
+        <br>
+        <div class="card-header">
+            <h1>Endereço do <%= usuario.nome %></h1>
+        </div>
+        <div class="card-body">
+            <table id="listar-produtos" class="table table-bordered">
+                <thead>
+                    <th scope="col">Rua</th>
+                    <th scope="col">Número</th>
+                    <th scope="col">Bairro</th>
+                    <th scope="col">Cep</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%=enderecos.rua  %></td>
+                        <td><%=enderecos.numero %></td>
+                        <td><%=enderecos.bairro %></td>
+                        <td><%=enderecos.cep %></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<%- include ("../../partials/footer.ejs")%>

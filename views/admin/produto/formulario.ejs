@@ -1,0 +1,52 @@
+<%- include ("../../partials/header.ejs")%>
+
+<body>
+    <%- include ("../../partials/adminnavbar.ejs")%>
+    <div class="container">
+        <br>
+        <div class="card-header">
+            <h1>Criar produto</h1>
+        </div>
+    </div>
+
+    <%- include ("../../partials/erros.ejs")%>
+
+    <br>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form action="/admin/produto/salvar" method="POST">
+                    <label for="nome">Nome : </label>
+                    <input id="nome" name="nome" type="text" placeholder="Insira o nome do produto"
+                        class="form-control">
+                    <label for="descricao">Descrição : </label>
+                    <input id="descricao" name="descricao" type="text" placeholder="Insira a descrição do produto"
+                        class="form-control">
+                    <label for="preco">Preço : </label>
+                    <input id="preco" name="preco" type="text" placeholder="Insira o preço do produto"
+                        class="form-control">
+                    <label for="categoria">Escolha uma categoria : </label>
+                    <select class="form-control" name="categoria" id="categoria">
+                        <option value="">Selecione</option>
+                        <% categorias.forEach((categoria)=>{  %>
+                        <option value="<%= categoria.id %>"><%= categoria.nome %></option>
+                        <% }) %>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    $(document).ready(function($){
+        $(document).ready(function () {
+		$('#preco').mask("##0.00", {reverse: true});
+	});
+    })
+</script>
+
+<%- include ("../../partials/footer.ejs")%>

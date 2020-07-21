@@ -1,0 +1,34 @@
+<%- include ("../../partials/header.ejs")%>
+
+<body>
+    <%- include ("../../partials/adminnavbar.ejs")%>
+    <div class="container">
+        <br>
+        <div class="card-header">
+            <h1>Criar categoria</h1>
+        </div>
+    </div>
+
+    <%- include ("../../partials/erros.ejs")%>
+
+    <br>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form action="/admin/categoria/salvar" method="POST">
+                    <label for="nome">Nome : </label>
+                    <input id="nome" name="nome" type="text" placeholder="Insira o nome da categoria"
+                        class="form-control">
+                    <label for="descricao">Descrição : </label>
+                    <input id="descricao" name="descricao" type="text" placeholder="Insira a descrição da categoria"
+                        class="form-control">
+                    <br>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+            </div>  
+        </div>        
+    </div>
+</body>
+
+<%- include ("../../partials/footer.ejs")%>
