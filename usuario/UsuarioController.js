@@ -4,7 +4,7 @@ const Usuario = require('./Usuario')
 const Endereco = require('../endereco/Endereco')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const validarCpf = require('validar-cpf')
 const adminAuth = require('../middleware/adminAuth')
 
