@@ -15,7 +15,9 @@
     "sequelize": "^6.3.3",
     "validar-cpf": "^2.1.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "node-pre-gyp":"0.12.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app"
