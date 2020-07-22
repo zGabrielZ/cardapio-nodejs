@@ -80,7 +80,7 @@ rota.post('/usuario/salvar' ,(req, res) => {
 
     if(validarCpf(cpf) == false){
         req.flash('msg_erro', 'CPF inválido')
-        res.redirect('/admin/usuario/lista')
+        res.redirect('/usuario/criar')
     }
 
     if (erros) {
@@ -94,7 +94,7 @@ rota.post('/usuario/salvar' ,(req, res) => {
 
                     if(validarCpf(cpf) == false){
                         req.flash('msg_erro', 'CPF inválido')
-                        res.redirect('/admin/usuario/lista')
+                        res.redirect('/usuario/criar')
                     }
 
                     Usuario.create({
@@ -110,14 +110,14 @@ rota.post('/usuario/salvar' ,(req, res) => {
             
                     ).then(() => {
                         req.flash('msg_sucesso', 'Cadastrado com sucesso !!')
-                        res.redirect('/login')
+                        res.redirect('/')
                     }).catch((erro) => {
                         req.flash('msg_erro', 'Houve um erro na hora de cadastrar')
-                        res.redirect('/login')
+                        res.redirect('/')
                     })
                 } else {
                     req.flash('msg_erro', 'Já existe este email cadastrado')
-                    res.redirect('/login')
+                    res.redirect('/')
                 }
             })
     }
@@ -149,7 +149,7 @@ rota.get('/admin/usuario/endereco/:id',adminAuth,(req,res)=>{
 
 //rota para ver login 
 
-rota.get('/login',(req,res)=>{
+rota.get('/',(req,res)=>{
     res.render('admin/usuario/login')
 })
 
@@ -171,11 +171,11 @@ rota.post('/autenticar',(req,res)=>{
                 }
                 res.redirect('/admin/categoria/lista')
             } else{
-                res.redirect('/login')
+                res.redirect('/')
             }
         } else{
             req.flash('msg_erro', 'Não existe este email')
-            res.redirect('/login')
+            res.redirect('/')
         }
     })
 
@@ -183,7 +183,7 @@ rota.post('/autenticar',(req,res)=>{
 
 rota.get('/logout',(req,res)=>{
     req.session.usuario = undefined
-    res.redirect('/login')
+    res.redirect('/')
 })
 
 

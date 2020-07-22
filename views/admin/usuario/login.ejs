@@ -5,6 +5,8 @@
         <div class="card">
             <div class="card-header">
                 <h2>Login</h2>
+                <br>
+                <%- include ("../../partials/_msg.ejs")%>
             </div>
         <div class="card-body">
             <form action="/autenticar" method="POST">
@@ -15,6 +17,7 @@
                 <input class="form-control" type="senha" name="senha" id="senha" placeholder="Digite a senha">
                 <br>
                 <button type="submit" class="btn btn-success btn-block">Logar</button>
+                <a href="/usuario/criar" class="btn btn-primary btn-block">Criar usuário</a>
             </form>
         </div>
         </div>
