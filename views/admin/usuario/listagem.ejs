@@ -8,7 +8,6 @@
             <h1>Usuários</h1>
             <br>
             <%- include ("../../partials/_msg.ejs")%>
-            <a class="btn btn-danger" href="/admin/usuario/criar">Criar usuário</a>
             <hr>
             <form action="/admin/usuario/lista" method="GET">
                 <input type="text" name="nome" id="nome" class="form-control" placeholder="Buscar usuário">
@@ -35,8 +34,8 @@
                         <td><%=usuario.sobrenome %></td>
                         <td><%=usuario.email %></td>
                         <td><%=usuario.cpf %></td>
-                        <td><a href="/admin/usuario/endereco/<%= usuario.id %>" class="btn btn-primary">Ver</a></td>
-                        <td><a href="/admin/telefone/criar/<%= usuario.id %>" class="btn btn-warning">Ver</a></td>
+                        <td><a href="/admin/usuario/endereco/<%= usuario.id %>" class="btn btn-primary">Ver Endereço</a></td>
+                        <td><a href="/admin/telefone/criar/<%= usuario.id %>" class="btn btn-warning">Ver Telefones</a></td>
                     </tr>
                     <% }) %>
                 </tbody>
