@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize')
-const conexao = new Sequelize('lojanode','gabriel123','palmeiras12',{
-    host:'mysql669.umbler.com',
+const conexao = new Sequelize('lojinha_node','root','gabriel',{
+    host:'localhost',
     dialect:'mysql',
     timezone:'-03:00'
 })
